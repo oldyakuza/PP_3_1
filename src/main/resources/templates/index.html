@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PP31</title>
+</head>
+
+<body>
+    <h1>Users List</h1>
+
+    <a th:href="@{/showNewUserForm}"> Add New User </a>
+
+    <table>
+        <thead>
+        <tr>
+            <th>User First Name</th>
+            <th>User Last Name</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${allUsers}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td> <a th:href="@{/showUpdateForm/{id}(id=${user.id})}"> Update </a>
+                <a th:href="@{/deleteUser/{id}(id=${user.id})}"> Delete </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>
