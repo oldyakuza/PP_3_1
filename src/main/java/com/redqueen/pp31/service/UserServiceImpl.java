@@ -3,6 +3,7 @@ package com.redqueen.pp31.service;
 import com.redqueen.pp31.model.User;
 import com.redqueen.pp31.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,7 +18,7 @@ public class UserServiceImpl implements UserService{
     public List<User> getAllUsers() {
         return userRepository.findAll();
     }
-
+    @Transactional
     @Override
     public void addUser(User user) {
         userRepository.save(user);
@@ -34,6 +35,7 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
+    @Transactional
     @Override
     public void deleteUser(long id) {
         this.userRepository.deleteById(id);
